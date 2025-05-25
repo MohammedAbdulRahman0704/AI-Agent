@@ -47,3 +47,9 @@ raw_response = agent_executor.invoke({
     "query": "What are the latest advancements in quantum computing?"
 })
 print(raw_response)
+
+try:
+    structured_response = parser.parse(raw_response.get("output")[0]["text"])
+except Exception as e:
+    print(f"Error parsing response: {e}", "Raw response:", raw_response)
+    structured_response = None
